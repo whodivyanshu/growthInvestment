@@ -10,22 +10,22 @@ const Navbar = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth < 800) {
+            if (window.innerWidth < 882) {
                 setShowMenu(true);
             } else {
                 setShowMenu(false);
             }
             setShowDrawer(false); // Close the drawer on resize
         };
-    
+        
         handleResize(); // Check initial screen size
-    
+        
         window.addEventListener("resize", handleResize);
-    
+        
         return () => {
             window.removeEventListener("resize", handleResize);
         };
-    }, []);
+    },[]);
 
     const toggleMenu = () => {
         // setShowMenu(!showMenu);
