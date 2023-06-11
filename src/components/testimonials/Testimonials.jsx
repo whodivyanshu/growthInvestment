@@ -33,7 +33,7 @@ const Testimonials=()=> {
         <h1 className={styles.heading}>Happy Aasthians</h1>
         <div className={styles.reviewContainer}>
           {[0,1,2,3,4].map(i=>(
-            <ReviewTile key={i}/>
+            <ReviewTile key={i} index={i}/>
           ))}
 
     </div>
