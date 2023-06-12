@@ -33,10 +33,12 @@ const Navbar = () => {
     };
 
     return (
+        <>
         
         <div className={styles.nav}>
 
         <div className={styles.navbar}>
+
             <div className={styles.navbar_logo}>
                 <Image src={Logo} width={120} height={50} alt="growth" />
             </div>
@@ -85,6 +87,7 @@ const Navbar = () => {
             )}
         </div>
             </div>
+            </>
     );
 };
 

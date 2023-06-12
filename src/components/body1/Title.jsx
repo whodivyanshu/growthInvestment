@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import Body1res from './responsive/Body1res';
 import Body1 from './Body1';
+import styles from './body1.module.css';
 
 const Title = () => {
     const [responsive, setresponsive] = useState(false);
@@ -24,6 +25,7 @@ const Title = () => {
     },[]);
   return (
     <div>
+        <div className={styles.space} ></div>
         {responsive ? (<Body1res />) : (<Body1 />)}
     </div>
   )
