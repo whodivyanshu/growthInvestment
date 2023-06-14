@@ -3,11 +3,14 @@ import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import styles from './navbar.module.css';
 import Logo from "public/logo.png";
+import { auth, provider } from "@/app/firebase";
+import { signInWithPopup } from 'firebase/auth';
 
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false);
     const [showDrawer, setShowDrawer] = useState(false);
-
+    const [value, setValue] = useState("");
+    
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth < 882) {
@@ -32,6 +35,14 @@ const Navbar = () => {
         setShowDrawer(!showDrawer);
     };
 
+    const handleSignIn  = () => {
+        signInWithPopup(auth,provider).then((data)=>{
+          setValue(data.user.email);
+          localStorage.setItem("email",data.user.email);
+        })
+      }
+
+
     return (
         <div className={styles.navbar}>
             <div className={styles.navbar_logo}>
@@ -54,7 +65,7 @@ const Navbar = () => {
                         <Image src="https://img.icons8.com/ios/90/000000/headset--v1.png" width={30} height={30} alt='customer care' />
                     </li>
                     <li className={styles.navbarItem}>
-                        <button className={styles.navbtn}>Sign In</button>
+                        <button className={styles.navbtn} onClick={handleSignIn}>Sign In</button>
                     </li>
                 </ul>
             )}
@@ -75,7 +86,7 @@ const Navbar = () => {
                             <Image src="https://img.icons8.com/ios/90/4E0668/headset--v1.png" width={30} height={30} alt='customer care' />
                         </li>
                         <li className={styles.drawerItem}>
-                            <button className={styles.drawerbtn}>Sign In</button>
+                            <button className={styles.drawerbtn} onClick={handleSignIn}>Sign In</button>
                         </li>
                     </ul>
                 </div>
